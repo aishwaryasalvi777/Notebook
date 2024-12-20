@@ -14,7 +14,7 @@ html:
   use_repository_button: true
 
 repository:
-  url: https://github.com/ShahaDeven/Mood_classification_book
+  url: https://github.com/Pofit188/Income_notebook
   path_to_book: ./
   branch: main
 

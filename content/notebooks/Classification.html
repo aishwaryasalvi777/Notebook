@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RAW Python data cleaning, extaction and etc &#8212; Income Classification</title>
+    <title>Required File and modules Import &#8212; Income Classification</title>
   
   
   
@@ -159,14 +159,35 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    Mood Classification Project
+                    Income Classification Project
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../code_section.html">Code Files</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">RAW Python data cleaning, extaction and etc</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><strong>Required File and modules Import</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -225,7 +246,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/Profit188/Income_notebook" target="_blank"
+<a href="https://github.com/Pofit188/Income_notebook" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -327,7 +348,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>RAW Python data cleaning, extaction and etc</h1>
+    <h1>Required File and modules Import</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -337,12 +358,33 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">RAW Python data cleaning, extaction and etc</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-workflow">SQL workflow –&gt;</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-join-query">SQL Join query –&gt;</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-use-of-pandas-req">Python (use of pandas req.) –&gt;</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#df-encoded-data">df encoded data &gt;&gt;</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiement-1">Experiement 1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Required File and modules Import</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#required-modules-install"><strong>Required Modules Install</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-data-file-load"><strong>CSV Data file Load</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-and-normalization"><strong>Data Cleaning and Normalization</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sqllit3-connection"><strong>SQLLIT3 Connection</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-verification-before-insertion"><strong>Data verification before insertion</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-insertion-into-new-database"><strong>Data insertion into new Database</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-retrival-using-sql"><strong>Data Retrival using SQL</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-income-distribution"><strong>Plot Income Distribution</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-spliting-in-train-and-test"><strong>Data Spliting in train and test</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ydata-profiling"><strong>yData Profiling</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-correlation"><strong>Matrix correlation</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dublicate-row-check"><strong>Dublicate Row check</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#daghub-initialized"><strong>Daghub Initialized</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mlflow-intergaration-and-flow-setup"><strong>MLfLOW intergaration and flow Setup</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-verification-and-encoding"><strong>Data Verification and ENCODING</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-verification"><strong>Encoding Verification</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exepriment-1"><strong>EXEPRIMENT 1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-nan-value-and-encoding-check"><strong>DATaFrame Nan Value and encoding check</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-2"><strong>EXPERIMENT 2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-3"><strong>EXPERIMENT 3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-4"><strong>EXPERIMENT 4</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-5"><strong>EXPERIMENT 5</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-6"><strong>EXPERIMENT 6</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-7"><strong>EXPERIMENT 7</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-8-f1-score-plots"><strong>EXPERIMENT 8  -F1-score plots</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#final-module-file-creation"><strong>Final module file creation</strong></a></li>
 </ul>
 
             </nav>
@@ -355,9 +397,48 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="required-file-and-modules-import">
+<h1><strong>Required File and modules Import</strong><a class="headerlink" href="#required-file-and-modules-import" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">dagshub</span>
+<span class="kn">import</span> <span class="nn">mlflow</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
+<span class="kn">import</span> <span class="nn">mlflow.sklearn</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">ydata_profiling</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">VarianceThreshold</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span><span class="p">,</span> <span class="n">RidgeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span><span class="p">,</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span><span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_validate</span><span class="p">,</span> <span class="n">GridSearchCV</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="required-modules-install">
+<h1><strong>Required Modules Install</strong><a class="headerlink" href="#required-modules-install" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%pip install -q dagshub mlflow</span>
+<span class="c1">#%pip install ydata-profiling</span>
 </pre></div>
 </div>
 </div>
@@ -369,8 +450,12 @@
 </div>
 </div>
 </div>
-<section id="raw-python-data-cleaning-extaction-and-etc">
-<h1>RAW Python data cleaning, extaction and etc<a class="headerlink" href="#raw-python-data-cleaning-extaction-and-etc" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="csv-data-file-load">
+<h1><strong>CSV Data file Load</strong><a class="headerlink" href="#csv-data-file-load" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-cleaning-and-normalization">
+<h1><strong>Data Cleaning and Normalization</strong><a class="headerlink" href="#data-cleaning-and-normalization" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 1: Read the data and remove duplicates</span>
@@ -430,8 +515,8 @@
 </div>
 </div>
 </section>
-<section id="sql-workflow">
-<h1>SQL workflow –&gt;<a class="headerlink" href="#sql-workflow" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="sqllit3-connection">
+<h1><strong>SQLLIT3 Connection</strong><a class="headerlink" href="#sqllit3-connection" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
@@ -439,7 +524,14 @@
 <span class="c1"># Connect to SQLite database (or create it)</span>
 <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;income_evaluation.db&#39;</span><span class="p">)</span>
 <span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-
+</pre></div>
+</div>
+</div>
+</div>
+<p>Table schema based on 3NF</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># Create tables based on 3NF design with foreign key relationships</span>
 <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">CREATE TABLE IF NOT EXISTS Personal_Details (</span>
@@ -507,9 +599,12 @@
 </div>
 </div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-verification-before-insertion">
+<h1><strong>Data verification before insertion</strong><a class="headerlink" href="#data-verification-before-insertion" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 
 <span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;cleaned_income_evaluation.csv&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
@@ -531,6 +626,9 @@ First row data: {&#39;age&#39;: &#39;39&#39;, &#39; workclass&#39;: &#39;State-g
 </div>
 </div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-insertion-into-new-database">
+<h1><strong>Data insertion into new Database</strong><a class="headerlink" href="#data-insertion-into-new-database" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open the cleaned CSV file and read the data</span>
@@ -587,24 +685,10 @@ First row data: {&#39;age&#39;: &#39;39&#39;, &#39; workclass&#39;: &#39;State-g
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ProgrammingError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-82-3f9602d21b4a&gt;</span> in <span class="ni">&lt;cell line: 13&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data_no_duplicates</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="c1"># Insert into Personal_Details table</span>
-<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span><span class="s1">     INSERT INTO Personal_Details (Age, Race, Sex, Relationship)</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span><span class="s1">     VALUES (?, ?, ?, ?)</span>
-
-<span class="ne">ProgrammingError</span>: Cannot operate on a closed database.
-</pre></div>
-</div>
-</div>
 </div>
 </section>
-<section id="sql-join-query">
-<h1>SQL Join query –&gt;<a class="headerlink" href="#sql-join-query" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="data-retrival-using-sql">
+<h1><strong>Data Retrival using SQL</strong><a class="headerlink" href="#data-retrival-using-sql" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
@@ -679,8 +763,8 @@ First row data: {&#39;age&#39;: &#39;39&#39;, &#39; workclass&#39;: &#39;State-g
 </div>
 </div>
 </section>
-<section id="python-use-of-pandas-req">
-<h1>Python (use of pandas req.) –&gt;<a class="headerlink" href="#python-use-of-pandas-req" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="plot-income-distribution">
+<h1><strong>Plot Income Distribution</strong><a class="headerlink" href="#plot-income-distribution" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -716,6 +800,9 @@ Name: count, dtype: int64
 <img alt="../../_images/c6fcb216b09e946c8d4210b5105b13d7484fd8f8fffe75d07e55eef226f947ad.png" src="../../_images/c6fcb216b09e946c8d4210b5105b13d7484fd8f8fffe75d07e55eef226f947ad.png" />
 </div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-spliting-in-train-and-test">
+<h1><strong>Data Spliting in train and test</strong><a class="headerlink" href="#data-spliting-in-train-and-test" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -748,13 +835,9 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#pip install ydata-profiling</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ydata-profiling">
+<h1><strong>yData Profiling</strong><a class="headerlink" href="#ydata-profiling" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ydata_profiling</span> <span class="kn">import</span> <span class="n">ProfileReport</span>
@@ -771,7 +854,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "957648dbe7324ac68834d85eeb1f2c68", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "94593b0d3a1a4d9283e7b43b3b0277ff", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "7194ed40e1b942cfb435eaf5bde97118", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "8176a47d9c3f4c8ba1c3dd744e23f42c", "version_major": 2, "version_minor": 0}</script><div class="output text_html"><iframe width="100%" height="800px" srcdoc="&lt;!doctype html&gt;&lt;html lang=en&gt;&lt;head&gt;&lt;meta charset=utf-8&gt;&lt;meta name=viewport content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;&lt;meta name=description content=&quot;Profile report generated by YData! Visit us at https://ydata.ai&quot;&gt;&lt;meta name=author content=&quot;YData and the open source community.&quot;&gt;&lt;meta name=generator content=&quot;YData Profiling vv4.12.1&quot;&gt;&lt;meta name=url content=https://github.com/ydataai/ydata-profiling&gt;&lt;meta name=date content=&quot;2024-12-18 01:01:58.092583&quot;&gt;&lt;title&gt;Income Evaluation Dataset EDA&lt;/title&gt;&lt;style&gt;
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "957648dbe7324ac68834d85eeb1f2c68"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "94593b0d3a1a4d9283e7b43b3b0277ff"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7194ed40e1b942cfb435eaf5bde97118"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8176a47d9c3f4c8ba1c3dd744e23f42c"}</script><div class="output text_html"><iframe width="100%" height="800px" srcdoc="&lt;!doctype html&gt;&lt;html lang=en&gt;&lt;head&gt;&lt;meta charset=utf-8&gt;&lt;meta name=viewport content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;&lt;meta name=description content=&quot;Profile report generated by YData! Visit us at https://ydata.ai&quot;&gt;&lt;meta name=author content=&quot;YData and the open source community.&quot;&gt;&lt;meta name=generator content=&quot;YData Profiling vv4.12.1&quot;&gt;&lt;meta name=url content=https://github.com/ydataai/ydata-profiling&gt;&lt;meta name=date content=&quot;2024-12-18 01:01:58.092583&quot;&gt;&lt;title&gt;Income Evaluation Dataset EDA&lt;/title&gt;&lt;style&gt;
 @charset &quot;UTF-8&quot;;/*!
  * Bootstrap  v5.3.3 (https://getbootstrap.com/)
  * Copyright 2011-2024 The Bootstrap Authors
@@ -31653,6 +31736,9 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
     });
 });        &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;" frameborder="0" allowfullscreen></iframe></div></div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="matrix-correlation">
+<h1><strong>Matrix correlation</strong><a class="headerlink" href="#matrix-correlation" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select only numeric columns</span>
@@ -31676,85 +31762,9 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 <img alt="../../_images/98adf470e4166fe9a01326e34b637deff8d70601e9efec6762a7919660517235.png" src="../../_images/98adf470e4166fe9a01326e34b637deff8d70601e9efec6762a7919660517235.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import pandas as pd</span>
-<span class="c1"># import matplotlib.pyplot as plt</span>
-<span class="c1"># import seaborn as sns</span>
-<span class="c1"># import numpy as np</span>
-
-<span class="c1"># # Strip leading and trailing spaces from all column names</span>
-<span class="c1"># df.columns = df.columns.str.strip()</span>
-
-<span class="c1"># # Step 1: Check for missing values</span>
-<span class="c1"># missing_values = df.isna().sum()</span>
-<span class="c1"># print(&quot;Missing values per column:\n&quot;, missing_values)</span>
-
-<span class="c1"># # Handle missing values</span>
-<span class="c1"># # For example, we can impute missing categorical columns with the mode and numerical with median</span>
-<span class="c1"># df[&#39;workclass&#39;].fillna(df[&#39;workclass&#39;].mode()[0], inplace=True)</span>
-<span class="c1"># df[&#39;native-country&#39;].fillna(df[&#39;native-country&#39;].mode()[0], inplace=True)</span>
-
-<span class="c1"># # Step 2: Identify duplicate rows</span>
-<span class="c1"># duplicates = df.duplicated().sum()</span>
-<span class="c1"># print(f&quot;Number of duplicate rows: {duplicates}&quot;)</span>
-
-<span class="c1"># # Remove duplicate rows</span>
-<span class="c1"># df.drop_duplicates(inplace=True)</span>
-
-<span class="c1"># # Step 3: Feature distributions - Plot histograms for numeric features</span>
-<span class="c1"># numeric_features = df.select_dtypes(include=[&#39;number&#39;]).columns</span>
-
-<span class="c1"># # Plot distributions for each numeric feature</span>
-<span class="c1"># for feature in numeric_features:</span>
-<span class="c1">#     plt.figure(figsize=(8, 6))</span>
-<span class="c1">#     sns.histplot(df[feature], kde=True, bins=30)</span>
-<span class="c1">#     plt.title(f&#39;Distribution of {feature}&#39;)</span>
-<span class="c1">#     plt.show()</span>
-
-<span class="c1"># # Step 4: Check for capped values or unusual values</span>
-<span class="c1"># # Look for extremely high or low values that may need capping</span>
-<span class="c1"># for feature in numeric_features:</span>
-<span class="c1">#     print(f&quot;Max and Min values for {feature}: {df[feature].max()}, {df[feature].min()}&quot;)</span>
-
-<span class="c1">#     # Capping logic for extreme values</span>
-<span class="c1">#     if feature == &#39;capital-gain&#39; and df[feature].max() &gt; 1e6:</span>
-<span class="c1">#         df[feature] = np.where(df[feature] &gt; 1e6, 1e6, df[feature])</span>
-<span class="c1">#     elif feature == &#39;fnlwgt&#39; and df[feature].max() &gt; 1e7:</span>
-<span class="c1">#         df[feature] = np.where(df[feature] &gt; 1e7, 1e7, df[feature])</span>
-
-<span class="c1"># # Step 5: Apply log transformation to skewed features (like capital-gain, fnlwgt)</span>
-<span class="c1"># df[&#39;capital-gain&#39;] = np.log1p(df[&#39;capital-gain&#39;])</span>
-<span class="c1"># df[&#39;fnlwgt&#39;] = np.log1p(df[&#39;fnlwgt&#39;])</span>
-
-<span class="c1"># # Step 6: List cleanup tasks</span>
-<span class="c1"># cleanup_tasks = []</span>
-
-<span class="c1"># # Check for missing values</span>
-<span class="c1"># for column in missing_values.index:</span>
-<span class="c1">#     if missing_values[column] &gt; 0:</span>
-<span class="c1">#         cleanup_tasks.append(f&quot;Handle missing values in {column}&quot;)</span>
-
-<span class="c1"># # Check for duplicates</span>
-<span class="c1"># if duplicates &gt; 0:</span>
-<span class="c1">#     cleanup_tasks.append(&quot;Remove duplicate rows&quot;)</span>
-
-<span class="c1"># # Check for capped values</span>
-<span class="c1"># for feature in numeric_features:</span>
-<span class="c1">#     if df[feature].max() &gt; 1e6:</span>
-<span class="c1">#         cleanup_tasks.append(f&quot;Check for capping needed in {feature}&quot;)</span>
-
-<span class="c1"># # Final list of cleanup tasks</span>
-<span class="c1"># print(&quot;\nCleanup tasks:&quot;)</span>
-<span class="c1"># for task in cleanup_tasks:</span>
-<span class="c1">#     print(f&quot;- {task}&quot;)</span>
-
-<span class="c1"># # Optionally, you can save the cleaned data for further use</span>
-<span class="c1"># df.to_csv(&#39;income_evaluation_cleaned.csv&#39;, index=False)</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="dublicate-row-check">
+<h1><strong>Dublicate Row check</strong><a class="headerlink" href="#dublicate-row-check" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">duplicates</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -31768,13 +31778,9 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#%pip install -q dagshub mlflow</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="daghub-initialized">
+<h1><strong>Daghub Initialized</strong><a class="headerlink" href="#daghub-initialized" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dagshub</span>
@@ -31789,6 +31795,9 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 </pre>
 </div></div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mlflow-intergaration-and-flow-setup">
+<h1><strong>MLfLOW intergaration and flow Setup</strong><a class="headerlink" href="#mlflow-intergaration-and-flow-setup" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow</span>
@@ -31797,13 +31806,9 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#ex1</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-verification-and-encoding">
+<h1><strong>Data Verification and ENCODING</strong><a class="headerlink" href="#data-verification-and-encoding" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
@@ -32739,9 +32744,6 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
   </div>
 </div></div>
 </div>
-</section>
-<section id="df-encoded-data">
-<h1>df encoded data &gt;&gt;<a class="headerlink" href="#df-encoded-data" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">categorical_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Sex&quot;</span><span class="p">,</span> <span class="s2">&quot;Relationship&quot;</span><span class="p">,</span> <span class="s2">&quot;Workclass&quot;</span><span class="p">,</span> <span class="s2">&quot;Occupation&quot;</span><span class="p">,</span> <span class="s2">&quot;Native_Country&quot;</span><span class="p">,</span> <span class="s2">&quot;Education&quot;</span><span class="p">]</span>
@@ -32815,6 +32817,9 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 </div>
 </div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="encoding-verification">
+<h1><strong>Encoding Verification</strong><a class="headerlink" href="#encoding-verification" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_encoded</span>
@@ -33401,23 +33406,11 @@ document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
 </div></div>
 </div>
 </section>
-<section id="experiement-1">
-<h1>Experiement 1<a class="headerlink" href="#experiement-1" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="exepriment-1">
+<h1><strong>EXEPRIMENT 1</strong><a class="headerlink" href="#exepriment-1" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_validate</span><span class="p">,</span> <span class="n">GridSearchCV</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
-<span class="kn">import</span> <span class="nn">mlflow</span>
-<span class="kn">import</span> <span class="nn">mlflow.sklearn</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># Split data into features and target</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">]</span>
@@ -33532,6 +33525,9 @@ Experiment complete and results logged to MLflow!
 </div>
 </div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="dataframe-nan-value-and-encoding-check">
+<h1><strong>DATaFrame Nan Value and encoding check</strong><a class="headerlink" href="#dataframe-nan-value-and-encoding-check" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of NaN values in &#39;income&#39;: </span><span class="si">{</span><span class="n">df_encoded</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -33593,21 +33589,12 @@ Experiment complete and results logged to MLflow!
 </div>
 </div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="experiment-2">
+<h1><strong>EXPERIMENT 2</strong><a class="headerlink" href="#experiment-2" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">StratifiedKFold</span><span class="p">,</span> <span class="n">cross_val_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span><span class="p">,</span> <span class="n">RidgeClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
-<span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
-<span class="kn">import</span> <span class="nn">mlflow</span>
-<span class="kn">import</span> <span class="nn">mlflow.sklearn</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 
 <span class="c1"># Assuming df is already loaded and cleaned</span>
 <span class="c1"># Separate features and target</span>
@@ -33713,14 +33700,9 @@ Mean CV F1-Score: 0.8087, STD: 0.0037
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### ex3</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>EX3</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="experiment-3">
+<h1><strong>EXPERIMENT 3</strong><a class="headerlink" href="#experiment-3" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="s2">&quot;Experiment #3&quot;</span><span class="p">)</span>
@@ -33848,7 +33830,9 @@ Mean CV F1-Score: 0.8072, STD: 0.0026
 </div>
 </div>
 </div>
-<p>##EX4</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="experiment-4">
+<h1><strong>EXPERIMENT 4</strong><a class="headerlink" href="#experiment-4" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="s2">&quot;Experiment #4&quot;</span><span class="p">)</span>
@@ -34089,7 +34073,9 @@ Mean CV F1-Score: 0.8058, STD: 0.0048
 </div>
 </div>
 </div>
-<p>##Ex5</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="experiment-5">
+<h1><strong>EXPERIMENT 5</strong><a class="headerlink" href="#experiment-5" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="s2">&quot;Experiment #5&quot;</span><span class="p">)</span>
@@ -34107,15 +34093,7 @@ Mean CV F1-Score: 0.8058, STD: 0.0048
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow</span>
-<span class="kn">import</span> <span class="nn">mlflow.sklearn</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span><span class="p">,</span> <span class="n">cross_val_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 
 <span class="c1"># Apply PCA for dimensionality reduction</span>
 <span class="k">def</span> <span class="nf">pca_experiment</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -34239,7 +34217,9 @@ Mean CV F1-Score: 0.7709, STD: 0.0072
 </div>
 </div>
 </div>
-<p>##ex6</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="experiment-6">
+<h1><strong>EXPERIMENT 6</strong><a class="headerlink" href="#experiment-6" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
@@ -34265,13 +34245,7 @@ Mean CV F1-Score: 0.7709, STD: 0.0072
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow</span>
-<span class="kn">import</span> <span class="nn">mlflow.sklearn</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
-<span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
-<span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span> <span class="k">as</span> <span class="n">imPipeline</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span>
 
@@ -34344,7 +34318,9 @@ weighted avg       0.84      0.84      0.84      5206
 </div>
 </div>
 </div>
-<p>##Ex 7</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="experiment-7">
+<h1><strong>EXPERIMENT 7</strong><a class="headerlink" href="#experiment-7" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="s2">&quot;Experiment #7&quot;</span><span class="p">)</span>
@@ -34362,14 +34338,7 @@ weighted avg       0.84      0.84      0.84      5206
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow</span>
-<span class="kn">import</span> <span class="nn">mlflow.sklearn</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 
 <span class="c1"># Assuming X_train and y_train are your features and labels</span>
 <span class="c1"># X_train = &lt;Your Feature Data&gt;</span>
@@ -34430,6 +34399,9 @@ t-SNE visualization saved at: tsne_plot.png
 <img alt="../../_images/fd29e5ddcc15dba784cc3d39d0b1e93c9a773986ca8b37f4d908aede4131d459.png" src="../../_images/fd29e5ddcc15dba784cc3d39d0b1e93c9a773986ca8b37f4d908aede4131d459.png" />
 </div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="experiment-8-f1-score-plots">
+<h1><strong>EXPERIMENT 8  -F1-score plots</strong><a class="headerlink" href="#experiment-8-f1-score-plots" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="s2">&quot;Experiment #8&quot;</span><span class="p">)</span>
@@ -34601,6 +34573,9 @@ t-SNE visualization saved at: tsne_plot.png
 </div>
 </div>
 </div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="final-module-file-creation">
+<h1><strong>Final module file creation</strong><a class="headerlink" href="#final-module-file-creation" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">joblib</span>
@@ -34711,12 +34686,33 @@ Confusion Matrix:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">RAW Python data cleaning, extaction and etc</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-workflow">SQL workflow –&gt;</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-join-query">SQL Join query –&gt;</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python-use-of-pandas-req">Python (use of pandas req.) –&gt;</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#df-encoded-data">df encoded data &gt;&gt;</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiement-1">Experiement 1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Required File and modules Import</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#required-modules-install"><strong>Required Modules Install</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-data-file-load"><strong>CSV Data file Load</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-and-normalization"><strong>Data Cleaning and Normalization</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sqllit3-connection"><strong>SQLLIT3 Connection</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-verification-before-insertion"><strong>Data verification before insertion</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-insertion-into-new-database"><strong>Data insertion into new Database</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-retrival-using-sql"><strong>Data Retrival using SQL</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-income-distribution"><strong>Plot Income Distribution</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-spliting-in-train-and-test"><strong>Data Spliting in train and test</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ydata-profiling"><strong>yData Profiling</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-correlation"><strong>Matrix correlation</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dublicate-row-check"><strong>Dublicate Row check</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#daghub-initialized"><strong>Daghub Initialized</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mlflow-intergaration-and-flow-setup"><strong>MLfLOW intergaration and flow Setup</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-verification-and-encoding"><strong>Data Verification and ENCODING</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-verification"><strong>Encoding Verification</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exepriment-1"><strong>EXEPRIMENT 1</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-nan-value-and-encoding-check"><strong>DATaFrame Nan Value and encoding check</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-2"><strong>EXPERIMENT 2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-3"><strong>EXPERIMENT 3</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-4"><strong>EXPERIMENT 4</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-5"><strong>EXPERIMENT 5</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-6"><strong>EXPERIMENT 6</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-7"><strong>EXPERIMENT 7</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-8-f1-score-plots"><strong>EXPERIMENT 8  -F1-score plots</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#final-module-file-creation"><strong>Final module file creation</strong></a></li>
 </ul>
 
   </nav></div>

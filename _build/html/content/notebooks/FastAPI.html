@@ -159,7 +159,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    Income Classification Project
+                    Heart Attack Risk Prediction
                 </a>
             </li>
         </ul>
@@ -337,82 +337,129 @@
 <h1>FastAPI Code<a class="headerlink" href="#fastapi-code" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">joblib</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">joblib</span>
 <span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="c1"># Load the saved model (pipeline)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;C:/Users/Administrator/Desktop/FastAPI/app/random_forest_pipeline.joblib&#39;</span><span class="p">)</span>
+<span class="c1"># Load the saved pipeline</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;random_forest_pipeline.joblib&#39;</span><span class="p">)</span>
 
 <span class="c1"># Initialize FastAPI app</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 
-<span class="c1"># Define the input data structure using Pydantic</span>
-<span class="k">class</span> <span class="nc">UserInput</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="c1"># Define the input data model</span>
+<span class="k">class</span> <span class="nc">InputData</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="n">Age</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">Sex</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">Cholesterol</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">Cholesterol</span><span class="p">:</span> <span class="nb">float</span>
     <span class="n">SystolicBP</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">DiastolicBP</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">HeartRate</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">BMI</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">Triglycerides</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">Triglycerides</span><span class="p">:</span> <span class="nb">float</span>
     <span class="n">Diabetes</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">FamilyHistory</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">PreviousHeartProblems</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">MedicationUse</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">Smoking</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">Obesity</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">AlcoholConsumption</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">ExerciseHoursPerWeek</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">Diet</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">PreviousHeartProblems</span><span class="p">:</span> <span class="nb">int</span>
-    <span class="n">MedicationUse</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">StressLevel</span><span class="p">:</span> <span class="nb">int</span>
     <span class="n">SedentaryHoursPerDay</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">Income</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">PhysicalActivityDaysPerWeek</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">SleepHoursPerDay</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">Country</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">Continent</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">Hemisphere</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">Sex</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">Diet</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">PatientID</span><span class="p">:</span> <span class="nb">str</span>
 
+<span class="c1"># Feature engineering to create required columns</span>
 <span class="k">def</span> <span class="nf">preprocess_input</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="c1"># Convert input to DataFrame for processing by the model pipeline.</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">data</span><span class="p">])</span>
-    
-    <span class="c1"># Perform feature engineering if necessary.</span>
+
+    <span class="c1"># Feature engineering</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age_squared&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age_to_exercise_ratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ExerciseHoursPerWeek&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Exercise_hours_squared&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ExerciseHoursPerWeek&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
-    
-    <span class="c1"># Handle missing columns by adding them with default values (0 or appropriate defaults)</span>
-    <span class="n">expected_columns</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s1">&#39;preprocessor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
-    
-    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">expected_columns</span><span class="p">:</span>
+
+    <span class="c1"># Ensure all required columns are present, adding missing columns with default values</span>
+    <span class="n">required_columns</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Cholesterol&#39;</span><span class="p">,</span> <span class="s1">&#39;SystolicBP&#39;</span><span class="p">,</span> <span class="s1">&#39;DiastolicBP&#39;</span><span class="p">,</span> <span class="s1">&#39;HeartRate&#39;</span><span class="p">,</span> <span class="s1">&#39;BMI&#39;</span><span class="p">,</span> <span class="s1">&#39;Triglycerides&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;Diabetes&#39;</span><span class="p">,</span> <span class="s1">&#39;FamilyHistory&#39;</span><span class="p">,</span> <span class="s1">&#39;PreviousHeartProblems&#39;</span><span class="p">,</span> <span class="s1">&#39;MedicationUse&#39;</span><span class="p">,</span> <span class="s1">&#39;Smoking&#39;</span><span class="p">,</span> <span class="s1">&#39;Obesity&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;AlcoholConsumption&#39;</span><span class="p">,</span> <span class="s1">&#39;ExerciseHoursPerWeek&#39;</span><span class="p">,</span> <span class="s1">&#39;StressLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;SedentaryHoursPerDay&#39;</span><span class="p">,</span> <span class="s1">&#39;Income&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;PhysicalActivityDaysPerWeek&#39;</span><span class="p">,</span> <span class="s1">&#39;SleepHoursPerDay&#39;</span><span class="p">,</span> <span class="s1">&#39;Age_squared&#39;</span><span class="p">,</span> <span class="s1">&#39;Age_to_exercise_ratio&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;Exercise_hours_squared&#39;</span><span class="p">,</span> <span class="s1">&#39;PatientID&#39;</span><span class="p">,</span> <span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="s1">&#39;Continent&#39;</span><span class="p">,</span> <span class="s1">&#39;Hemisphere&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;Diet&#39;</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Add missing columns with default values (e.g., 0 for numerical or empty strings for categorical)</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">required_columns</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-            <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Default value for missing columns</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="ow">and</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">:</span>
+                <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># Default empty string for categorical columns</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Default 0 for numerical columns</span>
 
-    <span class="c1"># Select only the columns the model expects.</span>
-    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">expected_columns</span><span class="p">]</span>
+    <span class="c1"># Print the column names before renaming</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns before renaming:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 
-<span class="c1"># Define the prediction endpoint</span>
+
+    <span class="c1"># Print the column names after renaming to verify the changes</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columns after renaming:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+    <span class="c1"># Reorder the columns to ensure the model&#39;s expected column order</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">required_columns</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="c1"># Prediction route</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/predict&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">predict_heart_attack_risk</span><span class="p">(</span><span class="n">input_data</span><span class="p">:</span> <span class="n">UserInput</span><span class="p">):</span>
-    <span class="c1"># Convert input data to a dictionary and preprocess it.</span>
-    <span class="n">input_dict</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
-    
-    <span class="c1"># Preprocess and predict.</span>
-    <span class="n">processed_data</span> <span class="o">=</span> <span class="n">preprocess_input</span><span class="p">(</span><span class="n">input_dict</span><span class="p">)</span>
-    
-    <span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">processed_data</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    
-    <span class="c1"># Return the prediction result.</span>
-    <span class="k">if</span> <span class="n">prediction</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;Predicted Heart Attack Risk&quot;</span><span class="p">:</span> <span class="s2">&quot;Low&quot;</span><span class="p">}</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;Predicted Heart Attack Risk&quot;</span><span class="p">:</span> <span class="s2">&quot;High&quot;</span><span class="p">}</span>
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">InputData</span><span class="p">):</span>
+    <span class="n">input_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+    <span class="n">processed_data</span> <span class="o">=</span> <span class="n">preprocess_input</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">processed_data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;prediction&quot;</span><span class="p">:</span> <span class="s2">&quot;High Risk&quot;</span> <span class="k">if</span> <span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;Low Risk&quot;</span><span class="p">}</span>
 
-<span class="c1"># Add a simple health check endpoint.</span>
+<span class="c1"># Root route</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Heart Attack Risk Prediction API is running&quot;</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Heart Attack Risk Prediction API&quot;</span><span class="p">}</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">uvicorn</span>
-    <span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
+
+
+
+
+<span class="c1">#Test</span>
+<span class="c1"># {</span>
+<span class="c1">#   &quot;Age&quot;: 45,</span>
+<span class="c1">#   &quot;Cholesterol&quot;: 200.5,</span>
+<span class="c1">#   &quot;SystolicBP&quot;: 130,</span>
+<span class="c1">#   &quot;DiastolicBP&quot;: 85,</span>
+<span class="c1">#   &quot;HeartRate&quot;: 75,</span>
+<span class="c1">#   &quot;BMI&quot;: 28.5,</span>
+<span class="c1">#   &quot;Triglycerides&quot;: 150,</span>
+<span class="c1">#   &quot;Diabetes&quot;: 1,</span>
+<span class="c1">#   &quot;FamilyHistory&quot;: 1,</span>
+<span class="c1">#   &quot;PreviousHeartProblems&quot;: 0,</span>
+<span class="c1">#   &quot;MedicationUse&quot;: 1,</span>
+<span class="c1">#   &quot;Smoking&quot;: 0,</span>
+<span class="c1">#   &quot;Obesity&quot;: 0,</span>
+<span class="c1">#   &quot;AlcoholConsumption&quot;: 1,</span>
+<span class="c1">#   &quot;ExerciseHoursPerWeek&quot;: 5.0,</span>
+<span class="c1">#   &quot;StressLevel&quot;: 2,</span>
+<span class="c1">#   &quot;SedentaryHoursPerDay&quot;: 4.0,</span>
+<span class="c1">#   &quot;Income&quot;: 50000,</span>
+<span class="c1">#   &quot;PhysicalActivityDaysPerWeek&quot;: 3,</span>
+<span class="c1">#   &quot;SleepHoursPerDay&quot;: 7.5,</span>
+<span class="c1">#   &quot;Country&quot;: &quot;USA&quot;,</span>
+<span class="c1">#   &quot;Continent&quot;: &quot;North America&quot;,</span>
+<span class="c1">#   &quot;Hemisphere&quot;: &quot;Northern&quot;,</span>
+<span class="c1">#   &quot;Sex&quot;: &quot;Male&quot;,</span>
+<span class="c1">#   &quot;Diet&quot;: &quot;Balanced&quot;,</span>
+<span class="c1">#   &quot;PatientID&quot;: &quot;12345&quot;</span>
+<span class="c1"># }</span>
 </pre></div>
 </div>
 </div>

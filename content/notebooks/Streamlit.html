@@ -159,7 +159,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    Income Classification Project
+                    Heart Attack Risk Prediction
                 </a>
             </li>
         </ul>
@@ -337,14 +337,11 @@
 <h1>StreamLit Code<a class="headerlink" href="#streamlit-code" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#127.0.0.1:52384</span>
-
-
-<span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="c1"># Set the FastAPI endpoint URL</span>
-<span class="n">FASTAPI_URL</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8000/docs#/&quot;</span>  <span class="c1"># Update this if your FastAPI app is hosted elsewhere</span>
+<span class="n">FASTAPI_URL</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8000/predict&quot;</span>  <span class="c1"># Correct API URL</span>
 
 <span class="c1"># Streamlit app title and description</span>
 <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Heart Attack Risk Prediction&quot;</span><span class="p">)</span>
@@ -370,6 +367,9 @@
 <span class="n">medication_use</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Medication Use&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">stress_level</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Stress Level (1-10)&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">sedentary_hours_per_day</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Sedentary Hours Per Day&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">24.0</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">8.0</span><span class="p">)</span>
+<span class="n">country</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;USA&quot;</span><span class="p">,</span> <span class="s2">&quot;India&quot;</span><span class="p">,</span> <span class="s2">&quot;UK&quot;</span><span class="p">,</span> <span class="s2">&quot;Canada&quot;</span><span class="p">])</span>  <span class="c1"># Customize as per your dataset</span>
+<span class="n">continent</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Continent&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;North America&quot;</span><span class="p">,</span> <span class="s2">&quot;Asia&quot;</span><span class="p">,</span> <span class="s2">&quot;Europe&quot;</span><span class="p">,</span> <span class="s2">&quot;Oceania&quot;</span><span class="p">])</span>  <span class="c1"># Customize as per your dataset</span>
+<span class="n">hemisphere</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Hemisphere&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Northern&quot;</span><span class="p">,</span> <span class="s2">&quot;Southern&quot;</span><span class="p">])</span>  <span class="c1"># Customize as per your dataset</span>
 
 <span class="c1"># Submit button</span>
 <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Predict Heart Attack Risk&quot;</span><span class="p">):</span>
@@ -393,7 +393,14 @@
         <span class="s2">&quot;PreviousHeartProblems&quot;</span><span class="p">:</span> <span class="n">previous_heart_problems</span><span class="p">,</span>
         <span class="s2">&quot;MedicationUse&quot;</span><span class="p">:</span> <span class="n">medication_use</span><span class="p">,</span>
         <span class="s2">&quot;StressLevel&quot;</span><span class="p">:</span> <span class="n">stress_level</span><span class="p">,</span>
-        <span class="s2">&quot;SedentaryHoursPerDay&quot;</span><span class="p">:</span> <span class="n">sedentary_hours_per_day</span>
+        <span class="s2">&quot;SedentaryHoursPerDay&quot;</span><span class="p">:</span> <span class="n">sedentary_hours_per_day</span><span class="p">,</span>
+        <span class="s2">&quot;Country&quot;</span><span class="p">:</span> <span class="n">country</span><span class="p">,</span>
+        <span class="s2">&quot;Continent&quot;</span><span class="p">:</span> <span class="n">continent</span><span class="p">,</span>
+        <span class="s2">&quot;Hemisphere&quot;</span><span class="p">:</span> <span class="n">hemisphere</span><span class="p">,</span>
+        <span class="s2">&quot;Income&quot;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+        <span class="s2">&quot;PhysicalActivityDaysPerWeek&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;SleepHoursPerDay&quot;</span><span class="p">:</span> <span class="mf">7.5</span><span class="p">,</span>
+        <span class="s2">&quot;PatientID&quot;</span><span class="p">:</span> <span class="s2">&quot;12345&quot;</span>  <span class="c1"># You can dynamically generate this or keep as placeholder</span>
     <span class="p">}</span>
 
     <span class="c1"># Make a POST request to the FastAPI endpoint</span>
@@ -402,12 +409,21 @@
 
         <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
             <span class="n">prediction</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-            <span class="n">risk_message</span> <span class="o">=</span> <span class="n">prediction</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Predicted Heart Attack Risk&quot;</span><span class="p">)</span>
+            <span class="c1"># Assuming the response has a field &#39;prediction&#39; with risk value (update as per your FastAPI response)</span>
+            <span class="n">risk_message</span> <span class="o">=</span> <span class="n">prediction</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;prediction&quot;</span><span class="p">,</span> <span class="s2">&quot;Error in prediction.&quot;</span><span class="p">)</span>
             <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediction: </span><span class="si">{</span><span class="n">risk_message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Heart Attack Risk Prediction&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;This app interacts with a deployed FastAPI model to predict heart attack risk based on user inputs.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check if the page loads correctly</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Streamlit is running properly.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

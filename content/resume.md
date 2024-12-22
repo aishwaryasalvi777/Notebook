@@ -2,9 +2,10 @@
 
 Here is my resume:
 
-[Download Resume (PDF)](Harshal%20Patil_BUF.pdf)
+[Download Resume (PDF)](Resume.pdf)
+
 
 ## Summary
-- **Name**: Harshal Sanjiv Patil
+- **Name**: Aishvarya Samuel Salvi
 - **Education**: MS in Data Science
-- **Skills**: Python, ML, Streamlit, FastAPI, Docker ,
+- **Skills**: Python, ML, Streamlit, FastAPI, Docker

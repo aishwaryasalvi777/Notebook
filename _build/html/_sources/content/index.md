@@ -1,4 +1,4 @@
-# Income Classification Project
+# Heart Attack Risk Prediction
 
 This JupyterBook showcases my Project work for EAS 503 Course.<br>
 Please click on the links to see the contents

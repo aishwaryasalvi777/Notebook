@@ -1,5 +1,5 @@
-title: "Income Classification"
-author: "Harshal Patil"
+title: "Heart Attack Prediction"
+author: "Aishvarya Salvi"
 logo: ""
 execute:
   execute_notebooks: "off"
@@ -14,7 +14,7 @@ html:
   use_repository_button: true
 
 repository:
-  url: https://github.com/Pofit188/Income_notebook
+  url: https://github.com/aishwaryasalvi777/Notebook
   path_to_book: ./
   branch: main
 

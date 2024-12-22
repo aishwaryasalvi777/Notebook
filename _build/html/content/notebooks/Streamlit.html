@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>StreamLit Code &#8212; Income Classification</title>
+    <title>StreamLit Code &#8212; Heart Attack Prediction</title>
   
   
   
@@ -30,7 +30,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -143,7 +143,7 @@
   
   
   
-    <p class="title logo__title">Income Classification</p>
+    <p class="title logo__title">Heart Attack Prediction</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -166,33 +166,6 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../code_section.html">Code Files</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Classification.html"><strong>Required File and modules Import</strong></a></li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <li class="toctree-l2"><a class="reference internal" href="FastAPI.html">FastAPI Code</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">StreamLit Code</a></li>
 </ul>
@@ -246,7 +219,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/Pofit188/Income_notebook" target="_blank"
+<a href="https://github.com/aishwaryasalvi777/Notebook" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -364,63 +337,77 @@
 <h1>StreamLit Code<a class="headerlink" href="#streamlit-code" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#127.0.0.1:52384</span>
+
+
+<span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
 <span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="c1"># Streamlit app</span>
-<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Income Classification App&quot;</span><span class="p">)</span>
+<span class="c1"># Set the FastAPI endpoint URL</span>
+<span class="n">FASTAPI_URL</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8000/docs#/&quot;</span>  <span class="c1"># Update this if your FastAPI app is hosted elsewhere</span>
 
-<span class="c1"># User input form</span>
-<span class="n">st</span><span class="o">.</span><span class="n">header</span><span class="p">(</span><span class="s2">&quot;Enter your details:&quot;</span><span class="p">)</span>
-<span class="n">age</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">hours_per_week</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Hours per Week&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
-<span class="n">education_num</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Education Number&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
-<span class="n">capital_gain</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Capital Gain&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">capital_loss</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Capital Loss&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">fnlwgt</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Fnlwgt (Final Weight)&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
-<span class="n">sex</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Sex&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="s1">&#39;Female&#39;</span><span class="p">])</span>
-<span class="n">relationship</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Relationship&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Wife&#39;</span><span class="p">,</span> <span class="s1">&#39;Own-child&#39;</span><span class="p">,</span> <span class="s1">&#39;Husband&#39;</span><span class="p">,</span> <span class="s1">&#39;Not-in-family&#39;</span><span class="p">,</span> <span class="s1">&#39;Other-relative&#39;</span><span class="p">,</span> <span class="s1">&#39;Unmarried&#39;</span><span class="p">])</span>
-<span class="n">workclass</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Workclass&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Private&#39;</span><span class="p">,</span> <span class="s1">&#39;Self-emp-not-inc&#39;</span><span class="p">,</span> <span class="s1">&#39;Self-emp-inc&#39;</span><span class="p">,</span> <span class="s1">&#39;Federal-gov&#39;</span><span class="p">,</span> <span class="s1">&#39;Local-gov&#39;</span><span class="p">,</span> <span class="s1">&#39;State-gov&#39;</span><span class="p">,</span> <span class="s1">&#39;Without-pay&#39;</span><span class="p">,</span> <span class="s1">&#39;Never-worked&#39;</span><span class="p">])</span>
-<span class="n">occupation</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Occupation&quot;</span><span class="p">,</span> <span class="p">[</span>
-    <span class="s1">&#39;Tech-support&#39;</span><span class="p">,</span> <span class="s1">&#39;Craft-repair&#39;</span><span class="p">,</span> <span class="s1">&#39;Other-service&#39;</span><span class="p">,</span> <span class="s1">&#39;Sales&#39;</span><span class="p">,</span> <span class="s1">&#39;Exec-managerial&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Prof-specialty&#39;</span><span class="p">,</span> <span class="s1">&#39;Handlers-cleaners&#39;</span><span class="p">,</span> <span class="s1">&#39;Machine-op-inspct&#39;</span><span class="p">,</span> <span class="s1">&#39;Adm-clerical&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Farming-fishing&#39;</span><span class="p">,</span> <span class="s1">&#39;Transport-moving&#39;</span><span class="p">,</span> <span class="s1">&#39;Priv-house-serv&#39;</span><span class="p">,</span> <span class="s1">&#39;Protective-serv&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Armed-Forces&#39;</span>
-<span class="p">])</span>
+<span class="c1"># Streamlit app title and description</span>
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Heart Attack Risk Prediction&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;This app interacts with a deployed FastAPI model to predict heart attack risk based on user inputs.&quot;</span><span class="p">)</span>
 
-<span class="c1"># Define the FastAPI endpoint URL</span>
-<span class="c1"># api_url = &quot;https://income-classifier-backend-630343362277.us-central1.run.app/predict&quot;</span>
-<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;http://18.222.116.60/predict&quot;</span>
-<span class="c1">#api_url = &quot;http://127.0.0.1:8000/predict&quot;</span>
+<span class="c1"># Input fields for user data</span>
+<span class="n">age</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">sex</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Sex&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Male&quot;</span><span class="p">,</span> <span class="s2">&quot;Female&quot;</span><span class="p">])</span>
+<span class="n">cholesterol</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Cholesterol (mg/dL)&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">systolic_bp</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Systolic Blood Pressure (mmHg)&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">diastolic_bp</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Diastolic Blood Pressure (mmHg)&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">heart_rate</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Heart Rate (bpm)&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
+<span class="n">bmi</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;BMI&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">25.0</span><span class="p">)</span>
+<span class="n">triglycerides</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">number_input</span><span class="p">(</span><span class="s2">&quot;Triglycerides (mg/dL)&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="n">diabetes</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Diabetes&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">family_history</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Family History of Heart Disease&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">smoking</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Smoking Status&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">obesity</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Obesity Status&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">alcohol_consumption</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Alcohol Consumption (drinks/day)&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">exercise_hours_per_week</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Exercise Hours Per Week&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">3.5</span><span class="p">)</span>
+<span class="n">diet</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Diet Type&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Healthy&quot;</span><span class="p">,</span> <span class="s2">&quot;Average&quot;</span><span class="p">,</span> <span class="s2">&quot;Unhealthy&quot;</span><span class="p">])</span>
+<span class="n">previous_heart_problems</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Previous Heart Problems&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">medication_use</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Medication Use&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">stress_level</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Stress Level (1-10)&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">sedentary_hours_per_day</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Sedentary Hours Per Day&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">24.0</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">8.0</span><span class="p">)</span>
 
-
-<span class="c1"># Predict button</span>
-<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Predict Income&quot;</span><span class="p">):</span>
+<span class="c1"># Submit button</span>
+<span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Predict Heart Attack Risk&quot;</span><span class="p">):</span>
     <span class="c1"># Prepare the input data for the API request</span>
     <span class="n">input_data</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;Age&quot;</span><span class="p">:</span> <span class="n">age</span><span class="p">,</span>
-        <span class="s2">&quot;Hours_per_Week&quot;</span><span class="p">:</span> <span class="n">hours_per_week</span><span class="p">,</span>
-        <span class="s2">&quot;Education_Num&quot;</span><span class="p">:</span> <span class="n">education_num</span><span class="p">,</span>
-        <span class="s2">&quot;Capital_Gain&quot;</span><span class="p">:</span> <span class="n">capital_gain</span><span class="p">,</span>
-        <span class="s2">&quot;Capital_Loss&quot;</span><span class="p">:</span> <span class="n">capital_loss</span><span class="p">,</span>
-        <span class="s2">&quot;Fnlwgt&quot;</span><span class="p">:</span> <span class="n">fnlwgt</span><span class="p">,</span>
         <span class="s2">&quot;Sex&quot;</span><span class="p">:</span> <span class="n">sex</span><span class="p">,</span>
-        <span class="s2">&quot;Relationship&quot;</span><span class="p">:</span> <span class="n">relationship</span><span class="p">,</span>
-        <span class="s2">&quot;Workclass&quot;</span><span class="p">:</span> <span class="n">workclass</span><span class="p">,</span>
-        <span class="s2">&quot;Occupation&quot;</span><span class="p">:</span> <span class="n">occupation</span><span class="p">,</span>
+        <span class="s2">&quot;Cholesterol&quot;</span><span class="p">:</span> <span class="n">cholesterol</span><span class="p">,</span>
+        <span class="s2">&quot;SystolicBP&quot;</span><span class="p">:</span> <span class="n">systolic_bp</span><span class="p">,</span>
+        <span class="s2">&quot;DiastolicBP&quot;</span><span class="p">:</span> <span class="n">diastolic_bp</span><span class="p">,</span>
+        <span class="s2">&quot;HeartRate&quot;</span><span class="p">:</span> <span class="n">heart_rate</span><span class="p">,</span>
+        <span class="s2">&quot;BMI&quot;</span><span class="p">:</span> <span class="n">bmi</span><span class="p">,</span>
+        <span class="s2">&quot;Triglycerides&quot;</span><span class="p">:</span> <span class="n">triglycerides</span><span class="p">,</span>
+        <span class="s2">&quot;Diabetes&quot;</span><span class="p">:</span> <span class="n">diabetes</span><span class="p">,</span>
+        <span class="s2">&quot;FamilyHistory&quot;</span><span class="p">:</span> <span class="n">family_history</span><span class="p">,</span>
+        <span class="s2">&quot;Smoking&quot;</span><span class="p">:</span> <span class="n">smoking</span><span class="p">,</span>
+        <span class="s2">&quot;Obesity&quot;</span><span class="p">:</span> <span class="n">obesity</span><span class="p">,</span>
+        <span class="s2">&quot;AlcoholConsumption&quot;</span><span class="p">:</span> <span class="n">alcohol_consumption</span><span class="p">,</span>
+        <span class="s2">&quot;ExerciseHoursPerWeek&quot;</span><span class="p">:</span> <span class="n">exercise_hours_per_week</span><span class="p">,</span>
+        <span class="s2">&quot;Diet&quot;</span><span class="p">:</span> <span class="n">diet</span><span class="p">,</span>
+        <span class="s2">&quot;PreviousHeartProblems&quot;</span><span class="p">:</span> <span class="n">previous_heart_problems</span><span class="p">,</span>
+        <span class="s2">&quot;MedicationUse&quot;</span><span class="p">:</span> <span class="n">medication_use</span><span class="p">,</span>
+        <span class="s2">&quot;StressLevel&quot;</span><span class="p">:</span> <span class="n">stress_level</span><span class="p">,</span>
+        <span class="s2">&quot;SedentaryHoursPerDay&quot;</span><span class="p">:</span> <span class="n">sedentary_hours_per_day</span>
     <span class="p">}</span>
 
-    <span class="c1"># Make the API request</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">api_url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">input_data</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="c1"># Make a POST request to the FastAPI endpoint</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">FASTAPI_URL</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">input_data</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-        <span class="c1"># Parse the prediction result from the response</span>
-        <span class="n">prediction</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-        <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Predicted Income: </span><span class="si">{</span><span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;Predicted Income&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error in making prediction. Please check the FastAPI server.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">prediction</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="n">risk_message</span> <span class="o">=</span> <span class="n">prediction</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Predicted Heart Attack Risk&quot;</span><span class="p">)</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediction: </span><span class="si">{</span><span class="n">risk_message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -440,7 +427,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/notebooks"
+            path: "./content\notebooks"
         },
         predefinedOutput: true
     }
@@ -491,7 +478,7 @@
   <div class="footer-item">
     
 <p class="component-author">
-By Harshal Patil
+By Aishvarya Salvi
 </p>
 
   </div>
